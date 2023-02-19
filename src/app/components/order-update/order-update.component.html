@@ -1,0 +1,51 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="title">Sipariş Düzenleme</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="orderUpdateForm">
+          <label for="id">İşlem No:</label>
+          <div class="form-group mb-3">
+            <input
+              type="text"
+              id="id"
+              formControlName="id"
+              class="form-control"
+              placeholder="İşlem No"
+            />
+          </div>
+
+          <label for="orderNo">Sipariş No:</label>
+          <div class="form-group mb-3">
+            <input
+              type="text"
+              id="orderNo"
+              formControlName="orderNo"
+              class="form-control"
+              placeholder="Sipariş No"
+            />
+          </div>
+
+
+          <label for="status">Statü:</label>
+          <div class="form-group mb-3">
+            <input
+              type="text"
+              id="status"
+              class="form-control"
+              placeholder="Statü"
+              formControlName="status"
+            />
+          </div>
+
+        </form>
+      </div>
+      <div class="card-footer text-end">
+        <button class="btn btn-fill btn-danger" style="margin-right: 10px;" routerLink="/">Vazgeç</button>
+        <button class="btn btn-fill btn-success" (click)="update()" >Kaydet</button>
+      </div>
+    </div>
+  </div>
+</div>

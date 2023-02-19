@@ -1,0 +1,45 @@
+<div *ngIf="dataLoaded==false" class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+  </div>
+</div>
+<div class="mb-3">
+  <label for="filterText" class="form-label">Sipariş Ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control"  id="filterText" placeholder="Sipariş Statüsüne Göre Ara">
+</div>
+<div *ngIf="filterText" class="alert alert-primary">
+  Filtrenen Kelime: {{filterText}}
+</div>
+<table *ngIf="dataLoaded==true"   class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">OrderNo</th>
+        <th scope="col">OutgoingAddress</th>
+        <th scope="col">DestinationAddress</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">UnitOfQuantity</th>
+        <th scope="col">Weight</th>
+        <th scope="col">UnitOfWeight</th>
+        <th scope="col">ProductCode</th>
+        <th scope="col">Note</th>
+        <th scope="col">Status</th>
+        <th>Seçiniz</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders | filterPipe:filterText">
+        <th scope="row">{{order.id}}</th>
+        <th >{{order.orderNo}}</th>
+        <td>{{order.outgoingAddress}}</td>
+        <td>{{order.destinationAddress}}</td>
+        <td>{{order.quantity}}</td>
+        <td>{{order.unitOfQuantity}}</td>
+        <td>{{order.weight}}</td>
+        <td>{{order.unitOfWeight}}</td>
+        <td>{{order.productCode}}</td>
+        <td>{{order.note}}</td>
+        <td>{{order.status}}</td>
+        <td><button (click)="addToCart(order)" type="button" class="btn btn-success">Seçiniz</button></td>
+      </tr>
+    </tbody>
+  </table>

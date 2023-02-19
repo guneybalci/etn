@@ -1,0 +1,30 @@
+
+
+<ul *ngIf="dataLoaded==true" class="list-group">
+  <li
+    routerLink="/orders"
+    [class]="getAllProductClass()"
+    (click)="clearCurrentProduct()"
+    style="cursor: pointer"
+  >
+  <span class="badge bg-dark rounded-pill">Tümünü Listele</span>
+  <div class="fw-bold"> Siparişler</div>
+  </li>
+  <li
+    *ngFor="let product of products"
+    (click)="setCurrentProduct(product)"
+    [class]="getCurrentProductClass(product)"
+    routerLink="/orders/product/{{ product.productCode }}"
+    style="cursor: pointer"
+  >
+   <span class="badge bg-warning rounded-pill"> Ürün Kodu:{{ product.productCode }}</span>
+      <div class="fw-bold"> {{ product.productName }}</div>
+
+
+  </li>
+</ul>
+<div *ngIf="dataLoaded==false" class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+  </div>
+</div>
+<h5 *ngIf="currentProduct">{{ currentProduct.productName }}</h5>
